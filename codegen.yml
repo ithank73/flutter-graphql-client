@@ -1,0 +1,6 @@
+overwrite: true
+schema: 'https://graphqlzero.almansi.me/api'
+generates:
+  ./lib/schema.graphql:
+    plugins:
+      - schema-ast
