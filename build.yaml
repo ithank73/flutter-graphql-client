@@ -2,8 +2,22 @@ targets:
   $default:
     builders:
       artemis:
-        options:
+        options: #1 options
+          naming_scheme: simple
           schema_mapping:
-            - schema: lib/schema.graphql
-              queries_glob: lib/graphql/*.graphql
-              output: lib/generated/graphql_api.dart
+            - output: lib/generated/graphql-api.dart
+              schema: lib/schema.graphql
+              queries_glob: lib/logic/graphql/operations/*.graphql
+          custom_parser_import: "package:example/lib/utils/coercers.dart"
+          scalar_mapping:
+            - graphql_type: GraphQLDate
+              dart_type: DateTime
+              use_custom_parser: true
+            - graphql_type: GraphQLDateTime
+              dart_type: DateTime
+              use_custom_parser: true
+            - graphql_type: JSONObject
+              dart_type: Map<String, dynamic>
+    sources:
+      - lib/**
+      - graphql/**

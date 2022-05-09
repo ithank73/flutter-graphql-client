@@ -1,0 +1,6 @@
+{
+    jobCategoryList(codeId: 45){
+        id
+        name
+    }
+}
